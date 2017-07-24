@@ -7,7 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class WriteMailPage extends BasePage {
 	@FindBy(xpath = "//textarea[@class='js-input compose__labels__input']")
-	private WebElement forWhoMail;
+	private WebElement adress;
 	@FindBy(xpath = "//input[@class='b-input']")
 	private WebElement themeOfMail;
 	@FindBy(xpath = "//iframe[@allowtransparency='true']")
@@ -25,8 +25,8 @@ public class WriteMailPage extends BasePage {
 
 	public void enterForWhoMailAndTheme(String forWho, String theme) {
 
-		forWhoMail.click();
-		forWhoMail.sendKeys(forWho);
+		adress.click();
+		adress.sendKeys(forWho);
 		themeOfMail.click();
 		themeOfMail.sendKeys(theme);
 	}

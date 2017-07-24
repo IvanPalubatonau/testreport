@@ -1,8 +1,5 @@
 package by.htp.testreport.test;
 
-
-
-
 import org.apache.log4j.Logger;
 import org.testng.Assert;
 
@@ -16,8 +13,9 @@ import by.htp.testreport.pageobject.WriteMailPage;
 
 public class SentMailTest extends BaseTest {
 	private static final Logger LOG = Logger.getLogger(SentMailTest.class);
-    String quantityMailBefore;
-    String quantityMailAfter;
+	String quantityMailBefore;
+	String quantityMailAfter;
+
 	@BeforeClass
 	public void loginAndWrite() {
 
@@ -27,24 +25,28 @@ public class SentMailTest extends BaseTest {
 		LOG.warn("start: login");
 		LOG.info("enter: tathtp@mail.ru Klopik123 ");
 		MailBoxPage mailBoxPage = mainPage.login("tathtp@mail.ru", "Klopik123");
-		quantityMailBefore=mailBoxPage.quantitySentMail();
-		//System.out.println(quantityMailBefore);
+		quantityMailBefore = mailBoxPage.quantitySentMail();
 		LOG.info("openWriteMailPage ");
-		WriteMailPage writeMailPage=mailBoxPage.openWriteMailPage();
+		WriteMailPage writeMailPage = mailBoxPage.openWriteMailPage();
 		LOG.info("enter:tathtp@mail.ru IvanHomeWork");
 		writeMailPage.enterForWhoMailAndTheme("tathtp@mail.ru", "IvanHomeWork");
 		LOG.info("enter text of Mail:Ivan Here");
 		writeMailPage.enterTextOfMail("Ivan Was Here");
 		LOG.info("send letter");
 		writeMailPage.sendMail();
-		quantityMailAfter=mailBoxPage.quantitySentMail();
-	} 
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+			quantityMailAfter = mailBoxPage.quantitySentMail();
 
-	@Test
-	public void sentLetterTest() {
-		LOG.warn("MailBefore"+" "+quantityMailBefore);
-		LOG.warn("MailAfter"+" "+quantityMailAfter);
-		Assert.assertNotEquals(quantityMailBefore, quantityMailAfter);
 		}
 	}
 
+	@Test
+	public void sentLetterTest() {
+		LOG.warn("MailBefore" + " " + quantityMailBefore);
+		LOG.warn("MailAfter" + " " + quantityMailAfter);
+		Assert.assertNotEquals(quantityMailBefore, quantityMailAfter);
+	}
+}

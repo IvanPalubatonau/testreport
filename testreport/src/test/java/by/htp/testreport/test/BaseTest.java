@@ -27,7 +27,7 @@ public class BaseTest {
 		System.setProperty("webdriver.gecko.driver", "d:\\driver\\geckodriver.exe");
 		driver = new FirefoxDriver();
 		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 		LOG.warn("finish 'startBrowser'");
 		return driver;
 	}

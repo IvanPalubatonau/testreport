@@ -18,26 +18,12 @@ public class MailBoxPage extends BasePage {
 	}
 
 	public WriteMailPage openWriteMailPage() {
-		
-		try {
-			Thread.sleep(3000);
-		} catch (InterruptedException e) {
 
-			e.printStackTrace();
-		}
 		writeMailButton.click();
 		return new WriteMailPage(driver);
 	}
 
 	public String quantitySentMail() {
-		
-		
-		try {
-			Thread.sleep(5000);
-		} catch (InterruptedException e) {
-
-			e.printStackTrace();
-		}
 
 		String quantitySentMail = sentMailButton.getAttribute("title");
 
